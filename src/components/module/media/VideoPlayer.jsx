@@ -36,7 +36,7 @@ function VideoPlayer() {
 				/>
 				<div className="videoPlayer__meta">
 					<h4>{currentMedia.meta.title}</h4>
-					<p>{currentMedia.meta.desc}</p>
+					<p style={{ width: "100%" }}>{currentMedia.meta.desc}</p>
 				</div>
 			</div>
 			<div className="videoPlayer__playlistComponent">

@@ -53,14 +53,9 @@ function EditUserDetails() {
 
 	return (
 		<div className={modalState ? "eudModalMain" : "hideModal"}>
-			<button onClick={() => dispatch(handleModalVisibility({}))}>Close</button>
-			{userInQuestion?.firstName}
-			{userInQuestion?.accessDetails?.playlists?.map((p) => {
-				return <p key={p._id}>{p.label}</p>;
-			})}
-
+			<h1> {userInQuestion?.firstName} </h1>
 			<div className="uploadMedia__dropdown">
-				<label htmlFor="playlist">Playlist</label>
+				<label htmlFor="playlist">Playlists</label>
 				<select
 					id="playlist"
 					name="playlist"
@@ -76,7 +71,19 @@ function EditUserDetails() {
 					))}
 				</select>
 			</div>
-			<button onClick={handlePlaylistUpdate}>Add</button>
+			<button onClick={handlePlaylistUpdate} style={{ width: "80px" }}>
+				Add
+			</button>
+			<h3>Accessible Playlists</h3>
+			{userInQuestion?.accessDetails?.playlists?.map((p) => {
+				return <p key={p._id}>{p.label}</p>;
+			})}
+			<button
+				onClick={() => dispatch(handleModalVisibility({}))}
+				style={{ width: "80px" }}
+			>
+				Close
+			</button>
 		</div>
 	);
 }

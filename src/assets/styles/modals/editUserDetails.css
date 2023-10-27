@@ -7,10 +7,11 @@
 	padding: 2rem;
 	background-color: #fff;
 	width: 480px;
-	height: 480px;
+	height: auto;
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .hideModal {

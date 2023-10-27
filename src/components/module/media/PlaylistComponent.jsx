@@ -18,7 +18,7 @@ function PlaylistComponent({ p }) {
 	return (
 		<div className="playlistComponent">
 			<h3 className="playlistComponent__playlistName">{p?.label}</h3>
-			<div className="playlistComponent__cardHolder">
+			<div className="playlistComponent__cardHolder pll">
 				{media.map((m) => (
 					<VideoCard m={m} />
 				))}

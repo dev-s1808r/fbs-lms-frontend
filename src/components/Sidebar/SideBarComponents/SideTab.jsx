@@ -3,8 +3,10 @@ import SideTabDrop from "./SideTabDrop";
 import "../../../assets/styles/sidebar/sidebar.css";
 import { setCurrentPlaylistToNull } from "../../../features/mediaSlice";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function SideTab({ heading }) {
+	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	return (
 		<div className="sideTabComponent">
@@ -12,6 +14,7 @@ function SideTab({ heading }) {
 				className="sideTabComponent__heading"
 				onClick={() => {
 					dispatch(setCurrentPlaylistToNull());
+					navigate("/");
 				}}
 			>
 				{heading}

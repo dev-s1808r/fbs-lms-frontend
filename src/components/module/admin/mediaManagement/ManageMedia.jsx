@@ -39,17 +39,26 @@ const MediaUploadForm = () => {
 		formData.append("thumbnail", e.target.thumbnail.files[0]);
 		formData.append("mediaFile", e.target.mediaFile.files[0]);
 		formData.append("description", e.target.description.value);
-		formData.append("playlist", returnPlaylistId(e.target.playlist.value));
+		formData.append("playlist", [
+			returnPlaylistId(e.target.playlist.value),
+			e.target.playlist.value,
+		]);
 
 		// Make a POST request to upload the media
 		try {
 			setUploading(true);
+			console.log(formData);
 			await axios
-				.post("http://localhost:8000/api/v1/admin/upload-media", formData, {
-					headers: {
-						"Content-Type": "multipart/form-data",
-					},
-				})
+				.post(
+					"http://localhost:8000/api/v1/admin/upload-media-to-cloud",
+					formData,
+					{
+						withCredentials: true,
+						headers: {
+							"Content-Type": "multipart/form-data",
+						},
+					}
+				)
 				.then((response) => {
 					console.log(response.data);
 					setUploading(false);
@@ -63,6 +72,7 @@ const MediaUploadForm = () => {
 
 	// check user
 	const userRole = useSelector((state) => state.userState.user.user.role);
+
 	if (userRole !== "admin") {
 		navigate("/");
 	}
